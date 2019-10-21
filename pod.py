@@ -27,6 +27,7 @@ class ImdbQuery(object):
         results = Soup(req, 'html.parser').findAll("td", {"class": "result_text"})
         for result in results:
             self.title_codes.append(str(result.parent).split("href=")[1].split(">")[0].strip("\"").split("/")[2])
+        return
 
     def scrape_media_titles(self):
         req = requests.get(self.search_address).text
